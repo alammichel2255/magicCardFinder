@@ -5,6 +5,10 @@ Problem statement.
 # Description of your application and how to get it started.
 
 # Features
+Across site
+- nav bar
+- background
+
 Landing page
 - search bar
 - links
