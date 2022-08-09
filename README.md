@@ -4,4 +4,33 @@ Problem statement.
 
 # Description of your application and how to get it started.
 
+# Features
+Landing page
+- search bar
+- links
+- random card display
 
+Searching through cards.
+- Search functionality
+  - card name
+  - card description
+  - card type
+  - card deck
+  - etc...
+
+Search results page
+- muliple cards
+  - display by
+    - image
+    - text
+  - Sort by
+
+Display single card page
+- card information
+  - artist
+  - printed_name
+  - printed_text
+  - printed_type_line
+- Downloading links
+  - card image
+  - card art
