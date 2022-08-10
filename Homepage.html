@@ -1,16 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Landing Page</title>
+        <meta charset="utf-8">
+        <title>MagiDex</title>
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="./images/color-wheel-logo.png"/>
+        <link rel="stylesheet" href="/styles/main.css"/>
     </head>
-    <body>
-
-        <h1>This would be a header</h1>
-        <p> Parragraph types if any.</p>
-
+    <header>
+        <nav class="shift">
+            <div class="nav-container">
+                <div class="link-container">
+                    <div class="nav-item active">
+                        <a id="Homepage" href="./Homepage.html">
+                        <img src="./images/color-wheel-logo.png"width="28" height="28" >
+                        </a>
+                    </div>
+                    <div class="nav-item active">
+                        <a href="./Homepage.html">
+                            <span href="./Homepage.html"> Random Card</span>
+                        </a>   
+                    </div>
+                    <a href="./Homepage.html">
+                        <span href="./Homepage.html"> Advanced Search</span>
+                    </a>
+                    <a href="./Homepage.html">
+                        <span href="./Homepage.html"> About</span>
+                    </a>
+                    </div >
+                    <div class="search-bar-container">
+                        <input class="nav-item active search-bar" type="search" placeholder="Search..." autocomplete="off" maxlength="100" minlength="0">
+                        <button class="nav-item active search-button"><i class="fa fa-search"></i></button>
+                    </div>
+            </div>
+        </nav>
+    </header>
+    <body class = "content">
+        <div>
+            <h1>MagiDex</h1>
+            <p> andinoianlasdkjgalijbg - Winston Churchill</p>
+            <input type="text" placeholder="Search something..." autocomplete="off" maxlength="100" minlength="0">
+        </div>
+        <div>
+            <input class="button1" type="button" value="Search">
+            <input type="button" onclick="randomFunc()" value="Advanced Search">
+            <input type="button" onclick="randomFunc()" value="Random Search">
+        </div>
+        <div class="stage">
+            <div class="container">
+                <div class="ring">
+                    <div class="img">1</div>
+                    <div class="img">2</div>
+                    <div class="img">3</div>
+                    <div class="img">4</div>
+                    <div class="img">5</div>
+                    <div class="img">6</div>
+                    <div class="img">7</div>
+                    <div class="img">8</div>
+                    <div class="img">9</div>
+                    <div class="img">10</div>
+                </div>
+            </div>  
+        </div>
     </body>
-    <body> 
-        <h2> Second Header </h2>
-        <p> parragraph.</p>
-    </body>
+    <script type = "text/javascript" src="/scripts/index.js"></script>
 </html>
