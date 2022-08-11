@@ -13,11 +13,11 @@ var content = `
 <img src="/images/DSC_9651.jpg" width="15%" height="25%">
 </div>`
 
-document.addEventListener("DOMContentLoaded", ()=>{
-    document.querySelector(".content").innerHTML += content;
-})
+// document.addEventListener("DOMContentLoaded", ()=>{
+//     document.querySelector("#content").innerHTML = content;
+// })
 
-document.querySelector("#Homepage").addEventListener("click", (event)=>{
-    event.preventDefault();
-    document.querySelector(".content").innerHTML += content;
-})
+// document.querySelector("#Homepage").addEventListener("click", (event)=>{
+//     event.preventDefault();
+//     document.querySelector("#content").innerHTML = content;
+// })
