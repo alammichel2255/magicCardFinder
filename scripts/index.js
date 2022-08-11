@@ -27,8 +27,26 @@ var content = `<div>
 
 
 document.querySelector("#Homepage").addEventListener("click", ()=>{
+    document.preventDecault();
     document.querySelector(".content").innerHTML += content;
 })
+
+document.querySelector("#Advanced").addEventListener("click", ()=>{
+    document.preventDecault();
+    document.querySelector(".content").innerHTML += content;
+})
+
+
+
+
+
+
+
+
+
+// document.querySelector("#Homepage").addEventListener("click", ()=>{
+//     document.querySelector(".content").innerHTML += content;
+// })
 
 
 
