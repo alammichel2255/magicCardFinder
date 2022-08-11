@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 const buildPage = async() => {
   let card = await ScryfallFetch.getRandom();
+  
   let cardOracleTxt = card.oracle_text;
   let cardColors = card.colors;
   let cardImgPng = card.image_uris.png;

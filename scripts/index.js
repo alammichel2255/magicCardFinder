@@ -1,15 +1,5 @@
-module.exports = {
-    ScryfallFetch: require('./scryfallFetch'),
-    cardDisplay: require('./cardDisplay')
-  }
-
-//Testing purposes
-const jsdom = require("jsdom");
-const dom = new jsdom(`<!DOCTYPE html><body><p id="main">My First JSDOM!</p></body>`);
-// This prints "My First JSDOM!"
-console.log(dom.window.document.getElementById("main").textContent);
-
-var content = `
+var content=``
+var landing = `
 <div class="center-search">
 <h1>MagiDex</h1>
 <p> This Game Will Ruin Your Life</p>
@@ -92,30 +82,3 @@ document.querySelector("#content-container").addEventListener("click", (event)=>
         }
     }
 })
-
-// if(document.querySelector("#searchButtonLanding")){
-//     document.querySelector("#searchButtonLanding").addEventListener("click", (event) => {
-//         event.preventDefault();
-//         document.querySelector(".content-container").innerHTML = ` 
-//         <div class="search-result-box">
-//         </div>`
-//         let search = document.querySelector("#searchBarLanding").value.toString();
-//         let fetchURL = `https://api.scryfall.com/cards/search?q=` + search
-//         fetch(fetchURL)
-//         .then((response) => response.json())
-//         .then((data) => {
-//             //grab needed data
-//             for(let i =0; i<data.data.length; i++){
-//                 if(data.data[i].image_uris){
-//                     content = `
-//                     <div class="search-result-item">
-//                         <a href="SearchResult.html">
-//                             <img src="${data.data[i].image_uris.png}" height="300px" >
-//                         </a>
-//                     </div>`
-//                     document.querySelector(".search-result-box").innerHTML += content;
-//                 }
-//             }
-//         })
-//     });
-// }
