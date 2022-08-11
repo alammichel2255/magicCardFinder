@@ -4,23 +4,7 @@
   "description": "Add any files you see fit for your application to work. Make sure to change this README to include a description of your application and how to get it started.",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/asims34/sdi-blended-project1-scaffold.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/asims34/sdi-blended-project1-scaffold/issues"
-  },
-  "homepage": "https://github.com/asims34/sdi-blended-project1-scaffold#readme",
-  "dependencies": {
-    "node-fetch": "^3.2.10"
-=======
-    "test": "test"
   },
   "repository": {
     "type": "git",
@@ -32,12 +16,13 @@
     "url": "https://github.com/adpears94/sdi-blended-project1-scaffold/issues"
   },
   "homepage": "https://github.com/adpears94/sdi-blended-project1-scaffold#readme",
-  "devDependencies": {
-    "package": "^1.0.1"
-  },
   "dependencies": {
+    "fetch": "^1.1.0",
     "node": "^18.7.0",
     "node-fetch": "^2.6.7"
->>>>>>> d05a046409ac3388638f8e6d607bfc6bcac2b391
+    
+  },
+  "devDependencies": {
+    "package": "^1.0.1"
   }
 }
