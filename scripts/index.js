@@ -1,13 +1,3 @@
-module.exports = {
-    ScryfallFetch: require('./scryfallFetch'),
-    cardDisplay: require('./cardDisplay')
-  }
-
-//Testing purposes
-const jsdom = require("jsdom");
-const dom = new jsdom(`<!DOCTYPE html><body><p id="main">My First JSDOM!</p></body>`);
-// This prints "My First JSDOM!"
-console.log(dom.window.document.getElementById("main").textContent);
 
 var content = `
 <div class="center-search">
