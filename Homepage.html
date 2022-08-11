@@ -6,38 +6,98 @@
         <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="shortcut icon" href="./images/color-wheel-logo.png"/>
         <link rel="stylesheet" href="/styles/main.css"/>
-    </head>
+</head>
     <header>
-        <nav class="shift">
+        <nav>
             <div class="nav-container">
                 <div class="link-container">
-                    <div class="nav-item active">
-                        <a id="Homepage" href="./Homepage.html">
+                    <div class="nav-item">
+                        <a href="Homepage.html" id="Homepage">
                         <img src="./images/color-wheel-logo.png"width="28" height="28" >
                         </a>
                     </div>
-                    <div class="nav-item active">
-                        <a href="./Homepage.html">
-                            <span href="./Homepage.html"> Random Card</span>
+                    <div class="nav-item">
+                        <a href="Homepage.html" id="Random-Card">
+                            <span> Random Card</span>
                         </a>   
                     </div>
-                    <a href="./Homepage.html">
-                        <span href="./Homepage.html"> Advanced Search</span>
+
+                    <a href="./Advanced.html">
+                        <span href="./Advanced.html"> Advanced Search</span>
                     </a>
                     <a href="./Homepage.html">
                         <span href="./Homepage.html"> About</span>
                     </a>
+
+                    <div class="nav-item">
+                        <a href="Homepage.html"id="Advanced-Search">
+                            <span> Advanced Search</span>
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="Homepage.html"id="About">
+                        <span> About</span>
+                        </a>
+                    </div>
+                    
+
                     </div >
                     <div class="search-bar-container">
-                        <input class="nav-item active search-bar" type="search" placeholder="Search..." autocomplete="off" maxlength="100" minlength="0">
-                        <button class="nav-item active search-button"><i class="fa fa-search"></i></button>
+                        <input id="searchBar" class="nav-item active search-bar" type="search" placeholder="Search..." autocomplete="off" maxlength="100" minlength="0">
+                        <button id="searchButton" class="nav-item active search-button"><i class="fa fa-search"></i></button>
                     </div>
+                </div>
             </div>
         </nav>
     </header>
+
+</head>
     <body class = "content">
-        
+        <div>
+            <h1>MagiDex</h1>
+            <p> andinoianlasdkjgalijbg - Winston Churchill</p>
+            <input type="text" placeholder="Search something..." autocomplete="off" maxlength="100" minlength="0">
+        </div>
+        <div>
+            <input class="button1" type="button" value="Search">
+            <input type="button" onclick="randomFunc()" value="Advanced Search">
+            <input type="button" onclick="randomFunc()" value="Random Search">
+        </div>
+        <div class="stage">
+            <div class="container">
+                <div class="ring">
+                    <div class="img">1</div>
+                    <div class="img">2</div>
+                    <div class="img">3</div>
+                    <div class="img">4</div>
+                    <div class="img">5</div>
+                    <div class="img">6</div>
+                    <div class="img">7</div>
+                    <div class="img">8</div>
+                    <div class="img">9</div>
+                    <div class="img">10</div>
+                </div>
+            </div>  
+        </div>
+
+    <body id = "content">
+        <div class="center-search">
+            <h1>MagiDex</h1>
+            <p> This Game Will Ruin Your Life</p>
+            <input class = "search-bar long" type="text" placeholder="Search..." autocomplete="off" maxlength="100" minlength="0">
+        </div>
+        <div class="search-buttons">
+            <input class = "search-buttons-long" type="button" value="Search">
+            <input class = "search-buttons-long" type="button" value="Advanced Search">
+            <input class = "search-buttons-long" type="button" value="Random Search">
+        </div>
+        <div class="bottom-image"> 
+            <img src="/images/DSC_9651.jpg" width="15%" height="25%">
+        </div>    
        
+
+    <body class="content-container" id = "content">
+        
     </body>
     <script type = "text/javascript" src="/scripts/index.js"></script>
 </html>

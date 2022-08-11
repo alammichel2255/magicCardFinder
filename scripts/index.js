@@ -24,11 +24,64 @@ var content = `
 <img src="/images/DSC_9651.jpg" width="15%" height="25%">
 </div>`
 
-document.addEventListener("DOMContentLoaded", ()=>{
+
+
+document.querySelector("#Homepage").addEventListener("click", ()=>{
+    document.preventDecault();
     document.querySelector(".content").innerHTML += content;
 })
 
-document.querySelector("#Homepage").addEventListener("click", (event)=>{
-    event.preventDefault();
+document.querySelector("#Advanced").addEventListener("click", ()=>{
+    document.preventDecault();
     document.querySelector(".content").innerHTML += content;
 })
+
+
+
+// document.querySelector("#searchButton").addEventListener("click", (event) => {
+//     event.preventDefault();
+//     document.querySelector(".content-container").innerHTML = `
+//     <div class="search-result-box">
+//     </div>`
+// });
+//     let search = document.querySelector("#searchBar").value.toString();
+//     let fetchURL = `https://api.scryfall.com/cards/search?q=` + search
+//     fetch(fetchURL)
+//     .then((response) => response.json())
+//     .then((data) => {
+//         //grab needed data
+//         for(let i =0; i<data.data.length; i++){
+//             if(data.data[i].image_uris){
+//                 content = `
+//                 <div class="search-result-item">
+//                     <a href="SearchResult.html">
+//                         <img src="${data.data[i].image_uris.png}" height="300px" >
+//                     </a>
+//                 </div>`
+//             }
+//         }
+//                 document.querySelector(".search-result-box").innerHTML += content;
+//     });
+
+
+
+
+
+// document.querySelector("#Homepage").addEventListener("click", ()=>{
+//     document.querySelector(".content").innerHTML += content;
+// })
+
+
+
+// const callMeMaybe = document.querySelector("#content").innerHTML += "<p>Hello World</p>"
+
+// document.getElementById("button1").addEventListener("click", callMeMaybe);
+// document.addEventListener("DOMContentLoaded", ()=>{
+//     document.querySelector("#content").innerHTML = content;
+// })
+
+// document.querySelector("#Homepage").addEventListener("click", (event)=>{
+//     event.preventDefault();
+//     document.querySelector("#content").innerHTML = content;
+// })
+

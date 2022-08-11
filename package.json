@@ -5,7 +5,27 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+<<<<<<< HEAD
     "test": "jest --watchAll"
+=======
+<<<<<<< HEAD
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asims34/sdi-blended-project1-scaffold.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asims34/sdi-blended-project1-scaffold/issues"
+  },
+  "homepage": "https://github.com/asims34/sdi-blended-project1-scaffold#readme",
+  "dependencies": {
+    "node-fetch": "^3.2.10"
+=======
+    "test": "test"
+>>>>>>> refs/remotes/origin/master
   },
   "repository": {
     "type": "git",
@@ -26,6 +46,11 @@
   "dependencies": {
     "live-server": "^1.2.2",
     "node": "^18.7.0",
+<<<<<<< HEAD
     "node-fetch": "^3.2.10"
+=======
+    "node-fetch": "^2.6.7"
+>>>>>>> d05a046409ac3388638f8e6d607bfc6bcac2b391
+>>>>>>> refs/remotes/origin/master
   }
 }
