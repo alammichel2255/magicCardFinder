@@ -29,6 +29,7 @@ document.querySelector("#Homepage").addEventListener("click", (event) => {
     window.location.search = searchParams.toString();
   }
   buildHomePage();
+  document.querySelector(".searchBar").value = document.querySelector(".searchBar").defaultValue;
 });
 
 document.querySelector("#Random-Card").addEventListener("click", (event) => {
@@ -61,9 +62,10 @@ const buildHomePage = async () => {
   let landingImage3 = await ScryfallFetch.getRandom();
 
   document.getElementById("bg-image").style.backgroundImage = `none`;
+  
   var content = ``;
   var landing = `
-  <div class="center-search">
+  <div class="center-search"></div>
   <h1>MagiDex</h1>
   <p> This Game Will Ruin Your Life</p>
   <input id="searchBar" class = "search-bar long" type="text" placeholder="Search..." autocomplete="off" maxlength="100" minlength="0">
@@ -89,24 +91,24 @@ const buildHomePage = async () => {
   
   document.querySelector(".bottom-image").addEventListener("click", (event) => {
     if(event.target){
-      buildCardPage(event.target.id)
+      console.log(event.target.id)
+      buildCardPage(event.target.id);
+      
     }
+    
   });
   
   //Deals with generating the search result page when using the navigation bar's search bar in the middle of the screen////////
-document.querySelector(".searchButton").addEventListener("click", (event) => {
+document.querySelector(".searchButton").addEventListener("click", async (event) => {
   event.preventDefault();
+  document.getElementById("bg-image").style.backgroundImage = `none`;
   if (document.querySelector(".searchBar").value !== "") {
     let search = document.querySelector(".searchBar").value;
     document.querySelector("#content-container").innerHTML = ` 
         <div class="search-result-box">
         </div>`;
 
-    let fetchURL = `https://api.scryfall.com/cards/search?q=` + search;
-    fetch(fetchURL)
-      .then((response) => response.json())
-      .then((data) => {
-        //grab needed data
+      let data = await ScryfallFetch.getSearch(search);
         for (let i = 0; i < data.data.length; i++) {
           if (data.data[i].image_uris) {
             content = `
@@ -119,18 +121,18 @@ document.querySelector(".searchButton").addEventListener("click", (event) => {
           }
         }
         document.querySelector(".search-result-box").addEventListener("click", (event) => {
-          if(event.target){
+          if(event.target.id !== "search-result-box" && event.target.id !== null){ //not working, fix so u can click cards and have the card page come up, but not be able to click in between cards
             buildCardPage(event.target.id)
           }
         })
-      });
-  }
-});
+      }
+  });
+
 
 
 //Deals with generating the search result page when using the landing page's search bar in the middle of the screen////////
 document.querySelector("#content-container")
-  .addEventListener("click", (event) => {
+  .addEventListener("click", async (event) => {
     if (event.target && event.target.id === "searchButton") {
       if (document.querySelector("#searchBar").value !== "") {
         let search = document.querySelector("#searchBar").value;
@@ -138,95 +140,27 @@ document.querySelector("#content-container")
         <div class="search-result-box">
         </div>`;
 
-
-        let fetchURL = `https://api.scryfall.com/cards/search?q=` + search;
-        fetch(fetchURL)
-          .then((response) => response.json())
-          .then((data) => {
-            //grab needed data
-            for (let i = 0; i < data.data.length; i++) {
-              if (data.data[i].image_uris) {
-                content = `
-                    <div class="search-result-item">
-                        <a href="#">
-                            <img id="${data.data[i].name}" src="${data.data[i].image_uris.small}" height="300px" >
-                        </a>
-                    </div>`;
-                document.querySelector(".search-result-box").innerHTML += content;
-              }
+          let data = await ScryfallFetch.getSearch(search);
+          for (let i = 0; i < data.data.length; i++) {
+            if (data.data[i].image_uris) {
+              content = `
+                  <div class="search-result-item">
+                      <a href="#">
+                          <img id="${data.data[i].name}" src="${data.data[i].image_uris.small}" height="300px" >
+                      </a>
+                  </div>`;
+              document.querySelector(".search-result-box").innerHTML += content;
             }
-            document.querySelector(".search-result-box").addEventListener("click", (event) => {
-              if(event.target){
-                buildCardPage(event.target.id)
-              }
-            })
-          });
+          }
+          document.querySelector(".search-result-box").addEventListener("click", (event) => {
+            if(event.target){
+              buildCardPage(event.target.id)
+            }
+          })
+        }
       }
-    }
-  
   });
-  // //Deals with generating the search result page when using the navigation bar's search bar in the middle of the screen////////
-  // document.querySelector(".searchButton").addEventListener("click", async (event) => {
-  //   event.preventDefault();
-  //   if (document.querySelector(".searchBar").value !== "") {
-  //     let search = document.querySelector(".searchBar").value;
-  //     document.getElementById("bg-image").style.backgroundImage = `none`;
-  //     document.querySelector("#content-container").innerHTML = ` 
-  //         <div class="search-result-box">
-  //         </div>`;
-
-  //     let data = await ScryfallFetch.getSearch(search);
-  //     for (let i = 0; i < data.data.length; i++) {
-  //       if (data.data[i].image_uris) {
-  //         content = `
-  //                 <div class="search-result-item">
-  //                     <a href="">
-  //                         <img id="${data.data[i].name}" src="${data.data[i].image_uris.small}" height="300px" >
-  //                     </a>
-  //                 </div>`;
-  //         document.querySelector(".search-result-box").innerHTML += content;
-  //       }
-  //     }
-  //     document.querySelector(".search-result-box").addEventListener("click", (event) => {
-  //       if(event.target){
-  //         buildCardPage(event.target.id)
-  //       }
-  //     });
-  //   }
-  // });
-
-  // //Deals with generating the search result page when using the landing page's search bar in the middle of the screen////////
-  // document.querySelector("#content-container").addEventListener("click", async (event) => {
-  //   if (event.target && event.target.id === "searchButton") {
-  //     if (document.querySelector("#searchBar").value !== "") {
-  //       let search = document.querySelector("#searchBar").value;
-  //       document.querySelector("#content-container").innerHTML = ` 
-  //       <div class="search-result-box">
-  //       </div>`;
-  //       let data = await ScryfallFetch.getSearch(search);
-  //       for (let i = 0; i < data.data.length; i++) {
-  //         for (let i = 0; i < data.data.length; i++) {
-  //           if (data.data[i].image_uris) {
-  //             content = `
-  //                 <div class="search-result-item">
-  //                     <a href="">
-  //                         <img id="${data.data[i].name}" src="${data.data[i].image_uris.small}" height="300px" >
-  //                     </a>
-  //                 </div>`;
-  //             document.querySelector(".search-result-box").innerHTML += content;
-  //           }
-  //         }
-  //         document.querySelector(".search-result-box").addEventListener("click", (event) => {
-  //           if(event.target){
-  //             buildCardPage(event.target.id)
-  //           }
-  //         })
-  //       }
-  //     } 
-  //   } else if (event.target && event.target.id === "random-search"){
-  //     buildCardPage();
-  //   }
-  // });
+  
 
 }
 
@@ -236,6 +170,8 @@ const buildCardPage = async(inputCard) => {
 
   // console.log(inputCard)
   
+// fix url logice and input detection for chooseing what card to fetch and pupulate url string
+
   let card = {}
   if(inputCard === undefined) {
     card = await ScryfallFetch.getRandom();
