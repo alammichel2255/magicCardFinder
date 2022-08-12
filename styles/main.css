@@ -1,6 +1,5 @@
 body{
     background-image: url("../images/home_background.jpeg");
-    color: #ffffff;
     color: #FEFEFE;
     object-fit: 100%;
     padding:0;
@@ -154,6 +153,8 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center; 
+    z-index: 3;
+    position: relative;
 }
 ::-webkit-scrollbar{
     width:10px
