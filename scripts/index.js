@@ -1,3 +1,5 @@
+import {ScryfallFetch} from "./scryfallFetch.js";
+
 var content=``
 var landing = `
 <div class="center-search">
@@ -25,6 +27,21 @@ document.querySelector("#Homepage").addEventListener("click", (event)=>{
     document.querySelector(".searchBar").value = document.querySelector(".searchBar").defaultValue 
 })
 
+const buildSearchPage = async() => {
+    let data = await ScryfallFetch.getSearch(search);
+    //grab needed data
+    for(let i =0; i<data.data.length; i++){
+        if(data.data[i].image_uris){
+            content = `
+            <div class="search-result-item">
+                <a href="SearchResult.html">
+                    <img src="${data.data[i].image_uris.small}" height="300px" >
+                </a>
+            </div>`
+            document.querySelector(".search-result-box").innerHTML += content;
+        }
+    }
+}
 document.querySelector(".searchButton").addEventListener("click", (event) => {
     event.preventDefault();
     if(document.querySelector(".searchBar").value !== "" ){
@@ -32,27 +49,41 @@ document.querySelector(".searchButton").addEventListener("click", (event) => {
         document.querySelector("#content-container").innerHTML = ` 
         <div class="search-result-box">
         </div>`
-        
-        let fetchURL = `https://api.scryfall.com/cards/search?q=` + search
-        fetch(fetchURL)
-        .then((response) => response.json())
-        .then((data) => {
-            //grab needed data
-            for(let i =0; i<data.data.length; i++){
-                if(data.data[i].image_uris){
-                    content = `
-                    <div class="search-result-item">
-                        <a href="SearchResult.html">
-                            <img src="${data.data[i].image_uris.small}" height="300px" >
-                        </a>
-                    </div>`
-                    document.querySelector(".search-result-box").innerHTML += content;
-                    
-                }
-            }
-        })
+        buildSearchPage()
     }
 });
+
+
+
+// document.querySelector(".searchButton").addEventListener("click", (event) => {
+//     event.preventDefault();
+//     if(document.querySelector(".searchBar").value !== "" ){
+//         let search = document.querySelector(".searchBar").value
+//         document.querySelector("#content-container").innerHTML = ` 
+//         <div class="search-result-box">
+//         </div>`
+        
+//         let fetchURL = `https://api.scryfall.com/cards/search?q=` + search
+//         fetch(fetchURL)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             //grab needed data
+//             for(let i =0; i<data.data.length; i++){
+//                 if(data.data[i].image_uris){
+//                     content = `
+//                     <div class="search-result-item">
+//                         <a href="SearchResult.html">
+//                             <img src="${data.data[i].image_uris.small}" height="300px" >
+//                         </a>
+//                     </div>`
+//                     document.querySelector(".search-result-box").innerHTML += content;
+                    
+//                 }
+//             }
+//         })
+//     }
+// });
+
 
 document.querySelector("#content-container").addEventListener("click", (event)=>{
     if(event.target && event.target.id === "searchButton"){
