@@ -30,6 +30,9 @@ a{
     text-decoration: none;
     padding: 4vh 16px;
 }
+a:hover {
+    color: red
+}
 .nav-item{
     margin: 10px;
     display:flex;

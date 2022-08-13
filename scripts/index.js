@@ -11,7 +11,7 @@ window.onload = () => {
   } else {
     buildHomePage();
   }
-} 
+}
 
 
 ///////////////////////// Navigation event triggers //////////////////////////////
@@ -43,21 +43,30 @@ document.querySelector("#Random-Card").addEventListener("click", (event) => {
 //   buildAdvancedSearchPage();
 // });
 
-// document.querySelector("#about").addEventListener("click", (event) => {
-//   event.preventDefault();
-//   document.querySelector(".searchBar").value = document.querySelector(".searchBar").defaultValue;
-//   buildAboutPage();
-// });
+document.querySelector("#About").addEventListener("click", (event) => {
+  event.preventDefault();
+  document.querySelector(".searchBar").value = document.querySelector(".searchBar").defaultValue;
+  let searchParams = new URLSearchParams(window.location.search);
+  if (searchParams.has('q')){
+    searchParams.delete('q')
+    window.location.search = searchParams.toString();
+  }
+  buildAboutPage();
+});
 
+
+///////////////////////// Home Page //////////////////////////////
 const buildHomePage = async () => {
 
   //pass query string for random card to just fetch image [https://scryfall.com/docs/api/cards/random]
   let getQuery = '?format=image&version=small'
 
   let landingImage1 = await ScryfallFetch.getRandom();
+  while (!landingImage1.image_uris){
+    landingImage1 = await ScryfallFetch.getRandom();
+  }
   // let landingImage2 = await ScryfallFetch.getRandom();
   // let landingImage3 = await ScryfallFetch.getRandom();
-
 
   // document.getElementById("bg-image").style.backgroundImage = `url(${landingImage1.image_uris.art_crop})`;
   
@@ -161,6 +170,8 @@ const buildHomePage = async () => {
   });
 }
 
+
+///////////////////////// Card Page //////////////////////////////
 const buildCardPage = async(inputCard) => {
   
   document.querySelector("body").style.backgroundImage = '';
@@ -231,5 +242,87 @@ let cardOracleTxt = card.oracle_text;
   document.querySelector("#content-container").innerHTML = pageHtml;
 } 
 
-// buildCardPage('make your mark');
-// buildCardPage()
+
+///////////////////////// About Page //////////////////////////////
+const buildAboutPage = () => {
+  let aboutHtml = `
+<div class="about">
+  <h1>MagiDex Story</h1>
+  
+  <h2 class="we-are">Who We Are</h2>
+  <div class="about-page">
+    <p>
+      We are a team of 5 developers, by the names of Alex, Michel, Tristian,
+      Avery and Eric. Our journey into this space started in a classroom only
+      a few weeks ago as students and we’ve been rapidly involving into true
+      professionals. We have a variation of knowledge and backgrounds and have
+      worked a number of projects and continue enhance our abilities. We all
+      have one true combined goal and that's to provide you with the best
+      product possible and continue to build it from there. You won’t find a
+      better team of gentlemen out there, guaranteed!!
+    </p>
+  </div>
+
+  <h2 class="different">Why We Are Different</h2>
+  <div class="about-page">
+    <p>
+      In August 2022, after noticing a problem, we started MagiDex to help our
+      fellow Magic users to find a simpler way to enter the Magic the
+      Gathering scene and learn in a more user-friendly way. We saw firsthand
+      how difficult is was to accomplish so, since Monday 8 August 2022 we’ve
+      poured every ounce of our blood, sweat, and tears into MagiDex and
+      making it simple but enjoyable experience for our users.  We’ve tackled
+      big challenges for our users and are constantly making it better. We
+      created solutions for learning how to play, getting access/details about
+      every card you can imagine, linking our users to the Magi community and
+      much more. All so that Magic the Gathering enthusiast like yourself can
+      better understand the ins and outs of game and also provide an
+      environment where beginners will not feel overwhelmed when stepping into
+      scene.  As a result, our work has been recognized by Galvanize as one of
+      the best web applications they've ever seen, EVER! We couldn’t be
+      prouder to offer you MagiDex and it’s user-friendly interface. We look
+      forward to bringing you some high-quality features for years to come!
+    </p>
+  </div>
+
+  <h2 class="mission">Our Mission</h2>
+  <div class="about-page">
+    <p class="about">
+      MagiDex is an entertainment company focused on providing high-quality
+      content and service to our MagiDex users.  As a company, they wanted to
+      change the way entering into the Magic the Gathering scene was done and
+      make it more appealing to the audience. In 2022, through research and
+      customer feedback they determined that Magic the Gathering is an
+      incredibly complex and difficult to learn game and current resources do
+      not allow for players looking to enter the scene to have a tool they can
+      learn and discover new cards/deck archetypes that is intuitive or
+      user-friendly which discourages people from trying in the first place. In
+      that moment realized that we had an opportunity to make some major
+      enhancements in this space. They decided to create MagiDex to help those
+      users and other sites that had the same issues. We believe in MagiDex and
+      our commitment to excellence and providing a more pleasant environment for
+      the Magic the Gathering community.
+    </p>
+  </div>
+
+  <br>
+  <h2>Resources</h2>
+    <a id="about-link1" href="https://magic.wizards.com/en/how-to-play" target="_blank">How To Play</a>
+    <!-- <a id="about-link" href="#" target="_blank">FAQs</a></li> -->
+    <!-- <a id="about-link" href="#" target="_blank">Twitter</a></li> -->
+    <a id="about-link2" href="https://github.com/adpears94/sdi-blended-project1-scaffold" target="_blank">GitHub</a><br>
+    <button>Contact Us</button>
+
+</div>`;
+
+  document.querySelector("#content-container").innerHTML = aboutHtml;
+
+  document.querySelector("#about-link1").addEventListener("click", (event) => {
+    console.log(event);
+    window.open("https://magic.wizards.com/en/how-to-play", "_blank");
+  });
+  document.querySelector("#about-link2").addEventListener("click", (event) => {
+    console.log(event);
+    window.open("https://github.com/adpears94/sdi-blended-project1-scaffold", "_blank");
+  });
+}
