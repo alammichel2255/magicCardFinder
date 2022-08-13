@@ -1,41 +1,35 @@
 import {ScryfallFetch} from "./scryfallFetch.js";
 
-
 window.onload = () => {
   if ('URLSearchParams' in window) {
-    let searchParams = new URLSearchParams(window.location.search);
-
+    let searchParams = new URLSearchParams(window.location.search); 
     if(searchParams.has('q')) {
-        console.log(document.querySelector(".main-content"))
-      if(searchParams.has('load')) {
-        return;
-      } else {  
-        const cardQuery = searchParams.get('q')
-        buildCardPage(cardQuery);
-      }
-
-    } else {
+        buildCardPage(searchParams.get('q'));
+    } else{
       buildHomePage();
-    }
+    } 
+  } else {
+    buildHomePage();
   }
-}
+} 
+
 
 ///////////////////////// Navigation event triggers //////////////////////////////
 document.querySelector("#Homepage").addEventListener("click", (event) => {
   event.preventDefault();
-  var searchParams = new URLSearchParams(window.location.search);
-  if(searchParams.has('q')) {
+  let searchParams = new URLSearchParams(window.location.search);
+  if (searchParams.has('q')){
     searchParams.delete('q')
     window.location.search = searchParams.toString();
   }
-  buildHomePage();
   document.querySelector(".searchBar").value = document.querySelector(".searchBar").defaultValue;
+  buildHomePage();
 });
 
 document.querySelector("#Random-Card").addEventListener("click", (event) => {
   event.preventDefault();
-  var searchParams = new URLSearchParams(window.location.search);
-  if(searchParams.has('q')) {
+  let searchParams = new URLSearchParams(window.location.search);
+  if (searchParams.has('q')){
     searchParams.delete('q')
     window.location.search = searchParams.toString();
   }
@@ -57,11 +51,15 @@ document.querySelector("#Random-Card").addEventListener("click", (event) => {
 
 const buildHomePage = async () => {
 
-  let landingImage1 = await ScryfallFetch.getRandom();
-  let landingImage2 = await ScryfallFetch.getRandom();
-  let landingImage3 = await ScryfallFetch.getRandom();
+  //pass query string for random card to just fetch image [https://scryfall.com/docs/api/cards/random]
+  let getQuery = '?format=image&version=small'
 
-  document.getElementById("bg-image").style.backgroundImage = `none`;
+  let landingImage1 = await ScryfallFetch.getRandom();
+  // let landingImage2 = await ScryfallFetch.getRandom();
+  // let landingImage3 = await ScryfallFetch.getRandom();
+
+
+  // document.getElementById("bg-image").style.backgroundImage = `url(${landingImage1.image_uris.art_crop})`;
   
   var content = ``;
   var landing = `
@@ -79,19 +77,13 @@ const buildHomePage = async () => {
   <a href="">
     <img id = "${landingImage1.name}" src="${landingImage1.image_uris.small}" height=300px>
   </a>
-  <a href="">
-    <img id = "${landingImage2.name}" src="${landingImage2.image_uris.small}" height=300px>
-  </a>
-  <a href="">
-    <img id = "${landingImage3.name}" src="${landingImage3.image_uris.small}" height=300px>
-  </a>
   </div>`;
 
   document.querySelector("#content-container").innerHTML = landing;
   
   document.querySelector(".bottom-image").addEventListener("click", (event) => {
     if(event.target){
-      console.log(event.target.id)
+      //console.log(event.target.id)
       buildCardPage(event.target.id);
       
     }
@@ -99,14 +91,14 @@ const buildHomePage = async () => {
   });
   
   //Deals with generating the search result page when using the navigation bar's search bar in the middle of the screen////////
-document.querySelector(".searchButton").addEventListener("click", async (event) => {
-  event.preventDefault();
-  document.getElementById("bg-image").style.backgroundImage = `none`;
-  if (document.querySelector(".searchBar").value !== "") {
-    let search = document.querySelector(".searchBar").value;
-    document.querySelector("#content-container").innerHTML = ` 
-        <div class="search-result-box">
-        </div>`;
+  document.querySelector(".searchButton").addEventListener("click", async (event) => {
+    event.preventDefault();
+    document.getElementById("bg-image").style.backgroundImage = `none`;
+    if (document.querySelector(".searchBar").value !== "") {
+      let search = document.querySelector(".searchBar").value;
+      document.querySelector("#content-container").innerHTML = ` 
+          <div class="search-result-box">
+          </div>`;
 
       let data = await ScryfallFetch.getSearch(search);
         for (let i = 0; i < data.data.length; i++) {
@@ -120,89 +112,89 @@ document.querySelector(".searchButton").addEventListener("click", async (event) 
             document.querySelector(".search-result-box").innerHTML += content;
           }
         }
-        document.querySelector(".search-result-box").addEventListener("click", (event) => {
-          if(event.target.id !== "search-result-box" && event.target.id !== null){ //not working, fix so u can click cards and have the card page come up, but not be able to click in between cards
-            buildCardPage(event.target.id)
+      document.querySelector(".search-result-box").addEventListener("click", (event) => {
+        if(event.target.id !== "search-result-box" && event.target.id !== null) {
+          let searchParams = new URLSearchParams(window.location.search);
+          if (searchParams.has('q')){
+            searchParams.delete('q')
+            window.location.search = searchParams.toString();
           }
-        })
-      }
+          buildCardPage(event.target.id)
+        }
+      })
+    }
   });
 
-
-
 //Deals with generating the search result page when using the landing page's search bar in the middle of the screen////////
-document.querySelector("#content-container")
-  .addEventListener("click", async (event) => {
+  document.querySelector("#content-container").addEventListener("click", async (event) => {
+    event.preventDefault();
     if (event.target && event.target.id === "searchButton") {
       if (document.querySelector("#searchBar").value !== "") {
         let search = document.querySelector("#searchBar").value;
         document.querySelector("#content-container").innerHTML = ` 
         <div class="search-result-box">
         </div>`;
-
-          let data = await ScryfallFetch.getSearch(search);
-          for (let i = 0; i < data.data.length; i++) {
-            if (data.data[i].image_uris) {
-              content = `
-                  <div class="search-result-item">
-                      <a href="#">
-                          <img id="${data.data[i].name}" src="${data.data[i].image_uris.small}" height="300px" >
-                      </a>
-                  </div>`;
-              document.querySelector(".search-result-box").innerHTML += content;
-            }
+        let data = await ScryfallFetch.getSearch(search);
+        for (let i = 0; i < data.data.length; i++) {
+          if (data.data[i].image_uris) {
+            content = `
+                <div class="search-result-item">
+                    <a href="#">
+                        <img id="${data.data[i].name}" src="${data.data[i].image_uris.small}" height="300px" >
+                    </a>
+                </div>`;
+            document.querySelector(".search-result-box").innerHTML += content;
           }
-          document.querySelector(".search-result-box").addEventListener("click", (event) => {
-            if(event.target){
-              buildCardPage(event.target.id)
-            }
-          })
         }
+        document.querySelector(".search-result-box").addEventListener("click", (event) => {
+          if(event.target){
+            let searchParams = new URLSearchParams(window.location.search);
+            if (searchParams.has('q')){
+              searchParams.delete('q')
+              window.location.search = searchParams.toString();
+            }
+            buildCardPage(event.target.id)
+          }
+        });
       }
+    }
   });
-  
-
 }
 
 const buildCardPage = async(inputCard) => {
-
+  
+  document.querySelector("body").style.backgroundImage = '';
   document.querySelector("#content-container").innerHTML = `<div class="main-content"></div>`;
 
-  // console.log(inputCard)
-  
-// fix url logice and input detection for chooseing what card to fetch and pupulate url string
-
-  let card = {}
-  if(inputCard === undefined) {
-    card = await ScryfallFetch.getRandom();
-  } else {
-  card = await ScryfallFetch.getNamed(inputCard)
-  }
-
-  //should set url query to equal the current card displayed if not passed in to use
+  let card
   if ('URLSearchParams' in window) {
     let searchParams = new URLSearchParams(window.location.search);
     if(searchParams.has('q')) {
-      card = await ScryfallFetch.getNamed(searchParams.get('q')) 
-    } 
-  } else {
-    let searchParams = new URLSearchParams(window.location.search);
-    searchParams.append("q", card.name);
-    window.location.search = searchParams.toString();
+      card = await ScryfallFetch.getNamed(searchParams.get('q'))
+    } else if (inputCard){
+      card = await ScryfallFetch.getNamed(inputCard)
+      searchParams.append("q", card.name);
+      window.location.search = searchParams.toString();
+    } else {
+      card = await ScryfallFetch.getRandom();
+      searchParams.append("q", card.name);
+      window.location.search = searchParams.toString();
+    }
   }
-
-  let symbols = await ScryfallFetch.getSymbols();
-  console.log(card.scryfall_uri);
-  console.log(symbols[0])
-  let manaCost = card.mana_cost.match(/.{1,3}/g);
-  
-  console.log(manaCost)
-
     
+  // let symbols = await ScryfallFetch.getSymbols();
+  // console.log(card.scryfall_uri);
+  // console.log(symbols[0])
+  // let manaCost = card.mana_cost.match(/.{1,3}/g);
+  
+  // console.log(manaCost)
+ 
   // for(symbol in symbols){
   // let result = symbol[0]..match()
   // }
-  
+
+  // let card = checkUrl(inputCard);
+  console.log(card)
 
 let cardOracleTxt = card.oracle_text;
   let cardColors = card.colors;
@@ -216,7 +208,8 @@ let cardOracleTxt = card.oracle_text;
   // console.log(card)
   
   document.getElementById("bg-image").style.backgroundImage = `url(${cardImgArt})`;
-  
+
+
   let pageHtml = `
 <div class="main-content">
   <div class="card-image">

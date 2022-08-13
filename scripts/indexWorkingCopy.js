@@ -40,7 +40,6 @@ document.querySelector("#Random-Card").addEventListener("click", (event) => {
 });
 
 
-
 //Deals with generating the search result page when using the navigation bar's search bar in the middle of the screen////////
 document.querySelector(".searchButton").addEventListener("click", (event) => {
   event.preventDefault();

@@ -18,9 +18,11 @@
 
   /* Center and scale the image nicely */
   background-position: center;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
   background-size: cover;
+  /* overflow: auto; */
 }
+
 
 /* Position text in the middle of the page/image */
 .main-content {
