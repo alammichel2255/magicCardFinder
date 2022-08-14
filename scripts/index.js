@@ -174,7 +174,7 @@ const buildHomePage = async () => {
 ///////////////////////// Card Page //////////////////////////////
 const buildCardPage = async(inputCard) => {
   
-  document.querySelector("body").style.backgroundImage = '';
+  document.querySelector("body").style.backgroundImage = 'none';
   document.querySelector("#content-container").innerHTML = `<div class="main-content"></div>`;
 
   let card
@@ -192,30 +192,55 @@ const buildCardPage = async(inputCard) => {
       window.location.search = searchParams.toString();
     }
   }
-    
-  // let symbols = await ScryfallFetch.getSymbols();
-  // console.log(card.scryfall_uri);
-  // console.log(symbols[0])
-  // let manaCost = card.mana_cost.match(/.{1,3}/g);
   
-  // console.log(manaCost)
- 
-  // for(symbol in symbols){
-  // let result = symbol[0]..match()
-  // }
+  // grab symbols then rip out only what the card uses into array
+  let symbols = await ScryfallFetch.getSymbols();
+  console.log(card.scryfall_uri);
+  // let manaCost = card.mana_cost.match(/.{1,3}/g);
+  // works but changes order to alphabetical
+  let manaCost = []
+  for (let i = 0; i < card.mana_cost.length; i += 3){
+    let currentMana = '';
+    currentMana += card.mana_cost[i]
+    currentMana += card.mana_cost[i+1]
+    currentMana += card.mana_cost[i+2]
+    manaCost.push(currentMana)
+  }
+  // change oracle text to have images for the symbols
+  let cardCMC = ''
+  for (let item of manaCost){
+    for (let obj of symbols){
+      if(obj.name === item){
+        let currentItem = `<img src="${obj.url}" alt="${item}" width="30" height="30">`
+        cardCMC += currentItem;
+      }
+    }
+  }
+  //console.log(cardCMC)
+  //console.log(card.oracle_text)
 
-  // let card = checkUrl(inputCard);
-  console.log(card)
+  let cardOracleTxt = card.oracle_text
 
-let cardOracleTxt = card.oracle_text;
-  let cardColors = card.colors;
+  for (let item of symbols) {
+    let replacement = `<img src="${item.url}" alt="${item}" width="20" height="20">`;
+    cardOracleTxt = cardOracleTxt.replaceAll(item.name, replacement)
+  }
+  //console.log(card.oracle_text)
+
+
   let cardImgPng = card.image_uris.png;
   let cardImgArt = card.image_uris.art_crop;
   let cardType = card.type_line;
   let cardRarity = card.rarity;
-  let cardFlavorText = card.flavor_text;
+  let cardFlavorText
+  if (card.flavor_text){
+    cardFlavorText = card.flavor_text;
+  } else {
+    cardFlavorText = ''
+  }
   let cardArtist = card.artist;
   let cardName = card.name;
+  let cardHealth = `${card.power}/${card.toughness}`
   // console.log(card)
   
   document.getElementById("bg-image").style.backgroundImage = `url(${cardImgArt})`;
@@ -227,19 +252,45 @@ let cardOracleTxt = card.oracle_text;
     <img src=${cardImgPng} alt="card image" class="responsive" id="cardImg">
   </div>
   <div class="text-box" id="testBox">
-    ${cardName}: ${cardColors}<br>
-    <hr class="solid">
+    <h2>Card Information</h2>
+    ${cardName}  ${cardCMC}<br> 
+    <hr class="rounded">
     Type: ${cardType}, Rarity: ${cardRarity}<br>
     <hr class="solid">
     ${cardOracleTxt}<br>
     <hr class="solid">
     <i>${cardFlavorText}</i><br>
+    Power: <b>${card.power}</b> / Toughness: <b>${card.toughness}</b>
     <hr class="dotted">
-    Artist: ${cardArtist}
-  </div>
+    Artist: ${cardArtist}<br>
+    <hr class="rounded">
+      <h2>Download/Links</h2><br>
+      <a id="full-card-dl" href="" target="_blank">Full Card Art</a> 
+      <a id="card-art-dl" href="" target="_blank">Card Art</a><br><br>
+      <a id="gatherer" href="" target="_blank">View on official MTG Site</a>
+
+    </div>
+    <div class="text-box2"></div>
+    <div class="text-box3"></div>
 </div>`;
 
   document.querySelector("#content-container").innerHTML = pageHtml;
+
+  document.querySelector("#full-card-dl").addEventListener("click", (event) => {
+    console.log(event);
+    window.open(cardImgPng, "_blank");
+  });
+
+  document.querySelector("#card-art-dl").addEventListener("click", (event) => {
+    console.log(event);
+    window.open(cardImgArt, "_blank");
+  });
+
+  document.querySelector("#gatherer").addEventListener("click", (event) => {
+    console.log(event);
+    window.open(card.related_uris.gatherer, "_blank");
+  });
+
 } 
 
 
@@ -308,8 +359,8 @@ const buildAboutPage = () => {
   <br>
   <h2>Resources</h2>
     <a id="about-link1" href="https://magic.wizards.com/en/how-to-play" target="_blank">How To Play</a>
-    <!-- <a id="about-link" href="#" target="_blank">FAQs</a></li> -->
-    <!-- <a id="about-link" href="#" target="_blank">Twitter</a></li> -->
+    <!-- <a id="about-link" href="#" target="_blank">FAQs</a> -->
+    <!-- <a id="about-link" href="#" target="_blank">Twitter</a> -->
     <a id="about-link2" href="https://github.com/adpears94/sdi-blended-project1-scaffold" target="_blank">GitHub</a><br>
     <button>Contact Us</button>
 

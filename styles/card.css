@@ -11,7 +11,7 @@
   -webkit-filter: blur(15px);
 
   /* Full height */
-  height: 91vh; 
+  height: 96vh; 
   width: 100vw;
   z-index: -1;
   position: absolute;
@@ -20,7 +20,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* overflow: auto; */
+  overflow: auto;
 }
 
 
@@ -28,28 +28,36 @@
 .main-content {
   /*background-color: rgb(0,0,0); /* Fallback color */
   /*background-color: rgba(0,0,0, 0.5); /* Black w/opacity/see-through */
-  /*border: 3px solid #f1f1f1;*/
-  position: absolute;
-  height: fit-content;
+  /* border: 3px solid #f1f1f1; */
+  position: static;
+  margin-top: 10vh;
+  /* height: fit-content; */
   z-index: 1;
-  width: 60vw;
+  width: 80vw;
+  height: 80vw;
   /*transform: translate(10%, 0%);*/
   /* padding: 20px; */
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  /* overflow:hidden */
 }
 
 .responsive {
   width: auto;
-  height: 500px;
+  height: 50vh;
 }
 .card-image {
+  background-color: rgb(7, 7, 7); /* Fallback color */
   position: relative;
-  /* border: 3px solid #636363; */
+  /* padding-top: 15vh; */
+  border: 3px solid #000000;
+  /* transform: translate(-5%, 10%); */
   z-index: 3;
-  height: 80%;
+  height: fit-content;
   float: left;
+  box-shadow: 5px 10px 18px black;
+  border-radius: 22px;
 }
 .text-box {
   background-color: rgb(0,0,0); /* Fallback color */
@@ -59,15 +67,46 @@
   border: 3px solid #000000;
   border-radius: 20px;
   position: relative;
-  transform: translate(-5%, 10%);
+  transform: translate(-8%, 5%);
   z-index: 2;
-  width: 50%;
-  height: 68%;
-  padding: 100px;
+  width: 32vw;
+  height: fit-content;
+  padding-left: 60px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   float: right;
   /* margin-left: 100px; */
   text-align: center;
-  overflow: hidden;
+  font-size: 19px;
+  justify-content: flex-end;
+  box-shadow: 5px 10px 18px black;
+}
+.text-box2 {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.1); /* Black w/opacity/see-through */
+  /* border: 3px solid #000000; */
+  /* border-radius: 20px; */
+  position: absolute;
+  transform: translate(0%, 25vh);
+  z-index: 1;
+  width: 100vw;
+  height: fit-content;
+  padding: 50px;
+  /* box-shadow: 5px 10px 18px black; */
+}
+.text-box3 {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.1); /* Black w/opacity/see-through */
+  /* border: 3px solid #000000; */
+  /* border-radius: 20px; */
+  position: absolute;
+  transform: translate(-16vw, -10vh);
+  z-index: 1;
+  width: fit-content;
+  height: 100vh;
+  padding: 50px;
+  /* box-shadow: 5px 10px 18px black; */
 }
  /* Dashed border */
  hr.dashed {
