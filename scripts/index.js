@@ -225,6 +225,7 @@ const buildCardPage = async(inputCard) => {
     let replacement = `<img src="${item.url}" alt="${item}" width="20" height="20">`;
     cardOracleTxt = cardOracleTxt.replaceAll(item.name, replacement)
   }
+  cardOracleTxt = cardOracleTxt.replaceAll('\n', '<br>')
   //console.log(card.oracle_text)
 
 
@@ -264,9 +265,9 @@ const buildCardPage = async(inputCard) => {
     <hr class="dotted">
     Artist: ${cardArtist}<br>
     <hr class="rounded">
-      <h2>Download/Links</h2><br>
-      <a id="full-card-dl" href="" target="_blank">Full Card Art</a> 
-      <a id="card-art-dl" href="" target="_blank">Card Art</a><br><br>
+      <h2>Download/Links</h2>
+      <p><a id="full-card-dl" href="" target="_blank">Full Card Art</a>|| 
+      <a id="card-art-dl" href="" target="_blank">Card Art</a></p>
       <a id="gatherer" href="" target="_blank">View on official MTG Site</a>
 
     </div>
