@@ -1,5 +1,5 @@
 .about {
-  height: 91vw;
+  height: 80vh;
   width: 80vw;
   text-align: center;
   justify-content: center;
@@ -12,7 +12,11 @@ h1 {
   margin-bottom: 2px;
   text-align: center;
   color: rgb(255, 255, 255);
+<<<<<<< HEAD
   text-shadow: 3px 5px 3px  rgb(14, 1, 1);
+=======
+  text-shadow: 5px 0 0 #000, 0 -1px 0 #000, 0 3px 0 #000, 3px 0 0 #000;
+>>>>>>> 5918911a9e30557b45726da2ba6991e7bf2ff83a
   justify-content: center
 }
 
@@ -21,7 +25,11 @@ h2 {
   margin-bottom: 2px;
   text-align: center;
   color: rgb(255, 255, 255);
+<<<<<<< HEAD
   text-shadow: 3px 5px 3px  rgb(14, 1, 1);
+=======
+  text-shadow: 5px 0 0 #000, 0 -1px 0 #000, 0 3px 0 #000, 3px 0 0 #000;
+>>>>>>> 5918911a9e30557b45726da2ba6991e7bf2ff83a
 }
 
 button {
