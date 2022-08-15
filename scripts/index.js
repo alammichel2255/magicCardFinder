@@ -352,8 +352,8 @@ const buildAboutPage = () => {
   
   <h2 class="we-are">Who We Are</h2>
   <div class="about-page">
-    <p>
-      We are a team of 5 developers, by the names of Alex, Michel, Tristian,
+    
+      We are a team of 5 developers, by the names of Alex, Michel, Tristan,
       Avery and Eric. Our journey into this space started in a classroom only
       a few weeks ago as students and we’ve been rapidly involving into true
       professionals. We have a variation of knowledge and backgrounds and have
@@ -361,12 +361,12 @@ const buildAboutPage = () => {
       have one true combined goal and that's to provide you with the best
       product possible and continue to build it from there. You won’t find a
       better team of gentlemen out there, guaranteed!!
-    </p>
+    
   </div>
 
   <h2 class="different">Why We Are Different</h2>
   <div class="about-page">
-    <p>
+   
       In August 2022, after noticing a problem, we started MagiDex to help our
       fellow Magic users to find a simpler way to enter the Magic the
       Gathering scene and learn in a more user-friendly way. We saw firsthand
@@ -383,12 +383,12 @@ const buildAboutPage = () => {
       the best web applications they've ever seen, EVER! We couldn’t be
       prouder to offer you MagiDex and it’s user-friendly interface. We look
       forward to bringing you some high-quality features for years to come!
-    </p>
+   
   </div>
 
   <h2 class="mission">Our Mission</h2>
   <div class="about-page">
-    <p>
+  
       MagiDex is an entertainment company focused on providing high-quality
       content and service to our MagiDex users.  As a company, they wanted to
       change the way entering into the Magic the Gathering scene was done and
@@ -403,7 +403,7 @@ const buildAboutPage = () => {
       users and other sites that had the same issues. We believe in MagiDex and
       our commitment to excellence and providing a more pleasant environment for
       the Magic the Gathering community.
-    </p>
+ 
   </div>
 
   <br>

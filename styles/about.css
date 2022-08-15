@@ -2,7 +2,8 @@
   height: 80vh;
   width: 80vw;
   text-align: center;
-  justify-content: center
+  justify-content: center;
+  overflow: auto;
 }
 
 h1 {
