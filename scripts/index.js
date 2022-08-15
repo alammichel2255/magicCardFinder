@@ -388,7 +388,7 @@ const buildAboutPage = () => {
 
   <h2 class="mission">Our Mission</h2>
   <div class="about-page">
-    <p class="about">
+    <p>
       MagiDex is an entertainment company focused on providing high-quality
       content and service to our MagiDex users.  As a company, they wanted to
       change the way entering into the Magic the Gathering scene was done and

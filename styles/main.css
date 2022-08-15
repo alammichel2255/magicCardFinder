@@ -235,6 +235,7 @@ h1{
     cursor: pointer;
     height: 0;
     width: 0;
+    
   }
   .checkmark {
     position: absolute;
