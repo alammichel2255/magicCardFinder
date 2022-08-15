@@ -518,7 +518,6 @@ const buildAdvancedPage = () => {
         if (document.getElementById("manaSearch").value !== '') query.push('mana%3A' + document.getElementById("manaSearch").value)
         if (document.getElementById("artistSearch").value !== '') query.push('artist%3A' + document.getElementById("artistSearch").value)
         if (document.getElementById("flavorSearch").value !== '') query.push('flavor%3A' + document.getElementById("flavorSearch").value)
-        // if (document.getElementById("loreSearch").value !== '') query.push('lore%3A' + document.getElementById("loreSearch").value)
 
         let rarityDropdown = document.getElementById("rarity")
         let rarityValue = rarityDropdown.options[rarityDropdown.selectedIndex].value
@@ -584,7 +583,7 @@ const buildAdvancedPage = () => {
       document.getElementById("Green-box").checked  = false
       document.getElementById("Red-box").checked = false
       document.getElementById("Colorless-box").checked  = false
-      document.getElementById("rarity").value = [0]
+      document.getElementById("rarity").value = document.getElementById("rarity").options[0].value
       document.getElementById("nameSearch").focus()
       
     }
