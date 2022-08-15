@@ -412,7 +412,7 @@ const buildAboutPage = () => {
     <!-- <a id="about-link" href="#" target="_blank">FAQs</a> -->
     <!-- <a id="about-link" href="#" target="_blank">Twitter</a> -->
     <a id="about-link2" href="https://github.com/adpears94/sdi-blended-project1-scaffold" target="_blank">GitHub</a><br>
-    <button>Contact Us</button>
+    <button id="about-link3" href= "https://www.youtube.com/watch?v=a3Z7zEc7AXQ" target="_blank">Contact Us</button>
 
 </div>`;
 
@@ -425,6 +425,10 @@ const buildAboutPage = () => {
   document.querySelector("#about-link2").addEventListener("click", (event) => {
     console.log(event);
     window.open("https://github.com/adpears94/sdi-blended-project1-scaffold", "_blank");
+  });
+  document.querySelector("#about-link3").addEventListener("click", (event) => {
+    console.log(event);
+    window.open("https://www.youtube.com/watch?v=a3Z7zEc7AXQ", "_blank");
   });
 }
 
@@ -460,27 +464,27 @@ const buildAdvancedPage = () => {
         <h2>Colors Included:</h2>
         <label class="container">White
           <input type="checkbox" id="White-box">
-          <span class="checkmark"></span>
+          <label class="checkmark"></label>
         </label>
         <label class="container">Blue
           <input type="checkbox" id="Blue-box">
-          <span class="checkmark"></span>
+          <label class="checkmark"></label>
         </label>
         <label class="container">Black
           <input type="checkbox" id="Black-box">
-          <span class="checkmark"></span>
+          <label class="checkmark"></label>
         </label>
         <label class="container">Red
           <input type="checkbox" id="Red-box">
-          <span class="checkmark"></span>
+          <label class="checkmark"></label>
         </label>
         <label class="container">Green
           <input type="checkbox" id="Green-box">
-          <span class="checkmark"></span>
+          <label class="checkmark"></label>
         </label>
         <label class="container">Colorless
           <input type="checkbox" id="Colorless-box">
-          <span class="checkmark"></span>
+          <label class="checkmark"></label>
         </label>
       </div>    
 
