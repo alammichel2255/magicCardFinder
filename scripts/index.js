@@ -411,7 +411,7 @@ const buildAboutPage = () => {
     <a id="about-link1" href="https://magic.wizards.com/en/how-to-play" target="_blank">How To Play</a>
     <!-- <a id="about-link" href="#" target="_blank">FAQs</a> -->
     <!-- <a id="about-link" href="#" target="_blank">Twitter</a> -->
-    <a id="about-link2" href="https://github.com/adpears94/sdi-blended-project1-scaffold" target="_blank">GitHub</a><br>
+    <a id="about-link2" href="https://github.com/alammichel2255/magicCardFinder" target="_blank">GitHub</a><br>
     <button id="about-link3" href= "https://www.youtube.com/watch?v=a3Z7zEc7AXQ" target="_blank">Contact Us</button>
 
 </div>`;
@@ -424,7 +424,7 @@ const buildAboutPage = () => {
   });
   document.querySelector("#about-link2").addEventListener("click", (event) => {
     console.log(event);
-    window.open("https://github.com/adpears94/sdi-blended-project1-scaffold", "_blank");
+    window.open("https://github.com/alammichel2255/magicCardFinder", "_blank");
   });
   document.querySelector("#about-link3").addEventListener("click", (event) => {
     console.log(event);
